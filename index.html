@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>Skin AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    <style>
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white">
+
+<!-- Navbar -->
+<nav class="fixed w-full z-10 bg-transparent backdrop-blur-md rounded-b-xl">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0 font-bold text-xl text-white">Skin AI</div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#home" class="text-white hover:text-green-500">Home</a>
+        <a href="#aiskin" class="text-white hover:text-green-500">AI Skin</a>
+        <a href="#about" class="text-white hover:text-green-500">About</a>
+        <a href="#contact" class="text-white hover:text-green-500">Contact</a>
+      </div>
+      <div class="md:hidden">
+        <button id="menuButton" class="focus:outline-none text-white">☰</button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden px-4 pb-4">
+    <a href="#home" class="block py-2 text-white hover:text-green-500">Home</a>
+    <a href="#aiskin" class="block py-2 text-white hover:text-green-500">AI Skin</a>
+    <a href="#about" class="block py-2 text-white hover:text-green-500">About</a>
+    <a href="#contact" class="block py-2 text-white hover:text-green-500">Contact</a>
+  </div>
+</nav>
+
+<!-- Home Section -->
+<section id="home" class="relative flex items-center justify-center h-screen bg-green-100 dark:bg-gray-800 rounded-xl shadow-lg p-6 pt-20 md:pt-24 font-poppins">
+  <!-- Texte à gauche -->
+  <div class="flex-1 text-center md:text-left space-y-4">
+    <h1 class="text-4xl font-bold">Welcome to Skin AI 🧠</h1>
+    <p class="text-lg">Découvrez notre plateforme intelligente capable de détecter les maladies de la peau à partir d'images.</p>
+  </div>
+
+  <!-- Image à droite -->
+  <div class="flex-1 hidden md:block">
+    <img src="img.png" alt="Skin AI illustration" class="w-full h-auto rounded-lg shadow-xl">
+  </div>
+</section>
+
+
+
+  <!-- AI Skin Section -->
+  <section id="aiskin" class="p-8 flex justify-center items-center">
+  <div class="relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-md shadow-sm">
+    
+    <div class="absolute top-0 right-0 w-14 h-14 border-t-4 border-r-4 border-slate-800 dark:border-white rounded-tr-xl"></div>
+    
+    <div class="absolute bottom-0 left-0 w-14 h-14 border-b-4 border-l-4 border-slate-800 dark:border-white rounded-bl-xl"></div>
+
+    <div class="relative z-10">
+      <div class="flex justify-center mb-4">
+        <div class="bg-green-600 p-3 rounded-xl shadow-lg">
+           <span class="text-3xl">🧠</span>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-center mb-4 text-gray-800 dark:text-white">AI Skin Detection</h2>
+      <p class="text-sm text-center text-gray-500 mb-6">Upload an image to analyze skin conditions using Deep Learning.</p>
+
+      <div id="dropZone"
+           class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-6 text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+        <p class="text-gray-600 dark:text-gray-300">➕ Choose or Drag Image</p>
+        <input type="file" id="fileInput" hidden />
+      </div>
+
+      <img id="preview" class="mt-4 rounded-lg hidden w-full object-cover max-h-48"/>
+
+      <div class="w-full bg-gray-200 rounded-full h-2.5 mt-4 hidden" id="progressContainer">
+        <div id="progressBar" class="bg-green-500 h-2.5 rounded-full w-0 transition-all duration-500"></div>
+      </div>
+
+      <button onclick="uploadImage()" class="mt-6 w-full bg-slate-800 dark:bg-green-600 hover:opacity-90 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition">
+        Predict Now <span>→</span>
+      </button>
+
+      <div id="result" class="mt-4 text-center font-medium"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- About Section -->
+ <section id="about" class="p-8 md:p-12 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-3xl shadow-xl max-w-5xl mx-auto text-center fade-in">
+
+  <!-- Title -->
+  <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-800 dark:text-white">
+    About This Project
+  </h2>
+
+  <!-- Description -->
+  <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
+    Ce projet utilise le <span class="font-semibold text-green-600">Deep Learning</span> pour analyser des images dermatologiques 
+    et détecter automatiquement les maladies de la peau.
+  </p>
+
+  <!-- Features -->
+  <div class="grid md:grid-cols-3 gap-6 mt-6">
+    
+    <div class="fade-in bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md 
+                transform transition duration-300 hover:scale-105 hover:shadow-xl">
+      <div class="text-3xl mb-2">⚡</div>
+      <h3 class="font-bold mb-2">Rapide</h3>
+      <p class="text-sm text-gray-500">Analyse en quelques secondes</p>
+    </div>
+
+    <div class="fade-in bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md 
+                transform transition duration-300 hover:scale-105 hover:shadow-xl">
+      <div class="text-3xl mb-2">🧠</div>
+      <h3 class="font-bold mb-2">Intelligent</h3>
+      <p class="text-sm text-gray-500">Basé sur le Deep Learning</p>
+    </div>
+
+    <div class="fade-in bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md 
+                transform transition duration-300 hover:scale-105 hover:shadow-xl">
+      <div class="text-3xl mb-2">🎯</div>
+      <h3 class="font-bold mb-2">Précis</h3>
+      <p class="text-sm text-gray-500">Résultats fiables</p>
+    </div>
+
+  </div>
+
+</section>
+  <!-- Contact Section -->
+<section id="contact" class="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 p-6">
+
+  <div class="w-full max-w-md bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl">
+
+    <!-- Title -->
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
+      Contact Us 📩
+    </h2>
+
+    <!-- Form -->
+    <form id="contactForm" class="space-y-5">
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block mb-1 text-gray-600 dark:text-gray-300">Email:</label>
+        <input type="email" id="email"
+          class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+          placeholder="Enter your email"
+          required>
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="message" class="block mb-1 text-gray-600 dark:text-gray-300">
+          Comment (max 100 mots):
+        </label>
+        <textarea id="message" rows="4"
+          class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+          placeholder="Write your message..."
+          required></textarea>
+      </div>
+
+      <!-- Button -->
+      <button type="submit"
+        class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl transition transform hover:scale-105">
+        Send 🚀
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+</div>
+
+<script>
+
+    module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
+  },
+};
+
+<script>
+const elements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+
+  // Mobile Menu Toggle
+  const menuButton = document.getElementById("menuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+  menuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Contact Form Validation
+  const contactForm = document.getElementById("contactForm");
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    const wordCount = message.trim().split(/\s+/).length;
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return alert("Veuillez entrer un email valide");
+    }
+    if (wordCount > 100) {
+      return alert("Le commentaire ne doit pas dépasser 100 mots");
+    }
+
+    alert("Message envoyé ! Merci 😊");
+    contactForm.reset();
+  });
+
+  // AI Skin Upload Logic
+  let selectedFile = null;
+  const dropZone = document.getElementById("dropZone");
+  const fileInput = document.getElementById("fileInput");
+
+  dropZone.onclick = () => fileInput.click();
+
+  fileInput.onchange = (e) => handleFile(e.target.files[0]);
+  dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add("bg-gray-200"); };
+  dropZone.ondragleave = () => dropZone.classList.remove("bg-gray-200");
+  dropZone.ondrop = (e) => { e.preventDefault(); dropZone.classList.remove("bg-gray-200"); handleFile(e.dataTransfer.files[0]); };
+
+  function handleFile(file) {
+    selectedFile = file;
+    const preview = document.getElementById("preview");
+    preview.src = URL.createObjectURL(file);
+    preview.classList.remove("hidden");
+  }
+
+  function uploadImage() {
+    if (!selectedFile) return alert("Choisissez une image");
+
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    const progressBar = document.getElementById("progressBar");
+    const container = document.getElementById("progressContainer");
+    container.classList.remove("hidden");
+    progressBar.style.width = "0%";
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 10;
+      progressBar.style.width = progress + "%";
+      if (progress >= 90) clearInterval(interval);
+    }, 200);
+
+    fetch("http://127.0.0.1:8000/api/predict/", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      progressBar.style.width = "100%";
+      showResult(data.top3);
+      setTimeout(() => container.classList.add("hidden"), 500);
+    });
+  }
+
+  function showResult(top3) {
+    let html = "<h3 class='font-bold'>📊 Top Predictions:</h3>";
+    top3.forEach(item => {
+      html += `<div class="mt-2 p-2 bg-gray-200 dark:bg-gray-700 rounded animate-pulse">
+        ${item.label} - ${item.confidence}%
+      </div>`;
+    });
+    document.getElementById("result").innerHTML = html;
+  }
+</script>
+
+</body>
+</html>
